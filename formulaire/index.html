@@ -1,0 +1,57 @@
+ <!DOCTYPE html>
+<html>
+    <head>
+        <title>Formulaire</title>
+        <meta charset="utf-8">
+        <script src="script.js"></script>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+<body onresize=Hauteur() onload=Hauteur()>
+    <header>
+        <h1>Soirée Dansante</h1>
+    </header>
+    <main>
+        <form id="formulaire">
+            <div id="instruction">
+                <em id="restriction">les caractères spéciaux et les chiffres ne sont pas autorisés.</em>
+            </div>
+            <div id="noms_prenom">
+            </div>
+            <div id="civilite">
+                <input type="text" name="LastName" value="" placeholder="Nom" class="name" id="nom" onblur=Nom(this)>
+                <input type="text" name="FirstName" value="" placeholder="Prénom" class="name" id="prenom" onblur=Prenom(this)>
+                <div id="valider">Cochez si vous êtes présent :  <input type="checkbox" name="present" value="present">
+                <input type="button" value="Valider" onclick=Valider() id="id"></div>
+            </div>
+            <div id="bouton" style="display: none">
+                <input type="button" value="Créer une playlist" id="crepl" onclick=Playlist()  />
+                <input type="button" value="Enregistrer" id="enregistrer" onclick=Record() />
+            </div>
+            <div id="Tableau_playlist" style="display: none">
+                <em id="restriction_ligne">Lorsque "Après diner" est selectionné, le temps doit être compris entre 22h et 5h.<br>
+                Le champ "Titre" est obligatoire pour enregistrer la ligne.</em>
+                <div id="div_playlist">
+                    <div class="ligne_playlist">
+                        <input type="text" name="Artiste" value="" placeholder="Artiste">
+                        <input type="text" name="Titre" value="" placeholder="Titre">
+                        <select onclick=DateTime(this) onfocusout=DateTime(this) class="moment">
+                            <option value="apero" selected>Apéro</option>
+                            <option value="repas">Repas</option>
+                            <option value="dessert">Dessert</option>
+                            <option value="apres_diner">Après diner</option>
+                        </select>
+                        <input id="champ_time" size=5 type="time" name="horaire" value=""  style="display: none" onfocusout=VerificationTime(this) class="heure">
+                        <span id="add"><img src="./images/plus_icn.jpg" class="icone" onclick=AjouterLigne(this) ></span>
+                        <span id="rm" style="display: none"><img src="./images/trash_icn.jpg" class="icone" onclick=SupprimerLigne(this) ></span>
+                    </div>
+                </div>
+                <div id="enregistrerfin">
+                        <input type="button" value="Enregistrer" onclick=Enregistrer()> 
+                </div>
+            </div>
+        </form>
+        <div id="absence"></div>
+    </main>
+
+</body>
+</html> 
